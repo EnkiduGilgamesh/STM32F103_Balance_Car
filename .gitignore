@@ -35,6 +35,7 @@
 *.i*86
 *.x86_64
 *.hex
+*.sim
 
 # Debug files
 *.dSYM/
@@ -51,21 +52,17 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# STM32
+# Build
+.ninja_deps
+.ninja_log
+*_build_cache
 
-SI/
+# List
+*.map
+**/*.dir
 
-cscope.*
+# BrowseInfo
+**/BrowseInfo
 
-tags
-
-
-# *.crf
-
-src/MDK/LIST/*
-!src/MDK/LIST/keep-dir.txt
-src/MDK/OUT/*
-!src/MDK/OUT/keep-dir.txt
-*.swp
-*.uvguix.*
-JLinkLog.txt
+# Settings
+**/settings
