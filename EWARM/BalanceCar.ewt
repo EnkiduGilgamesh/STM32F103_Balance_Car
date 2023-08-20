@@ -1457,6 +1457,39 @@
                     <name>$PROJ_DIR$\..\Core\Src\usart.c</name>
                 </file>
             </group>
+            <group>
+                <name>MPU6050</name>
+                <file>
+                    <name>$PROJ_DIR$\..\Core\Inc\delay.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Core\Inc\dmpKey.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Core\Inc\dmpmap.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Core\Inc\gyro.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Core\Src\inv_mpu.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Core\Inc\inv_mpu.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Core\Src\inv_mpu_dmp_motion_driver.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Core\Inc\inv_mpu_dmp_motion_driver.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Core\Src\mpu6050.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Core\Inc\mpu6050.h</name>
+                </file>
+            </group>
         </group>
     </group>
     <group>

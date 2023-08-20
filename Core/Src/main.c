@@ -24,7 +24,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
+#include "gyro.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -34,7 +35,10 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+float pitch, roll,  yaw;
+short aacx,  aacy,  aacz;       // original acceleration from sensor
+short gyrox, gyroy, gyroz;      // original angular acceleration from sensor        
+short temp;                     // temperature
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -75,7 +79,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+  
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -91,6 +95,16 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
+  
+//  while(MPU_Init()){
+//    printf("Init Error!\r\n");
+//  };
+//  while(mpu_dmp_init())
+//  {
+//    delay_ms(200);
+//    printf("%s, code: %d\r\n","Mpu6050 Init Wrong!", mpu_dmp_init());
+//  }
+//  printf("%s\r\n","Mpu6050 Init OK!");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -98,10 +112,20 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
- 
+
     /* USER CODE BEGIN 3 */
     HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
     HAL_Delay(500);
+//    if(mpu_dmp_get_data(&pitch,&roll,&yaw)==0)
+    {
+//      temp=MPU_Get_Temperature();
+//      MPU_Get_Accelerometer(&aacx,&aacy,&aacz);
+//      MPU_Get_Gyroscope(&gyrox,&gyroy,&gyroz);
+      printf("\t                      \t| \tx  \t| \ty  \t| \tz  \t|\r\n");
+      printf("\tAngle                 \t| \t%f \t| \t%f \t| \t%f \t|\r\n",pitch,roll,yaw);
+      printf("\tAcceleration          \t| \t%d \t| \t%d \t| \t%d \t|\r\n",aacx,aacy,aacz);
+      printf("\tangular acceleration  \t| \t%d \t| \t%d \t| \t%d \t|\r\n",gyrox,gyroy,gyroz);
+    }
   }
   /* USER CODE END 3 */
 }
@@ -146,7 +170,18 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+/* USARRT DEBUGGER */
+//int fputc(int ch, FILE *f){
+//  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xffff);
+//  return ch;
+//}
 
+/* SWD DEBUGGER */
+int fputc(int ch, FILE *f)
+{
+  ITM_SendChar(ch);
+  return ch;
+}
 /* USER CODE END 4 */
 
 /**
