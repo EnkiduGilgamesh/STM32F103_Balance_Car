@@ -24,8 +24,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <stdio.h>
+#include "debugger.h"
+#include "arg.h"
 #include "gyro.h"
+#include "pid.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -35,10 +37,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-float pitch, roll,  yaw;
-short aacx,  aacy,  aacz;       // original acceleration from sensor
-short gyrox, gyroy, gyroz;      // original angular acceleration from sensor        
-short temp;                     // temperature
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -70,7 +69,13 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+  /*  */
+  PIDController pid = { PID_KP, PID_KI, PID_KD,
+                      PID_TAU,
+                      PID_LIM_MIN, PID_LIM_MAX,
+                      PID_LIM_MIN_INT, PID_LIM_MAX_INT,
+                      SAMPLE_TIME_S,
+                      LOW_PASS_FILTER};
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -96,9 +101,9 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
   
-//  while(MPU_Init()){
-//    printf("Init Error!\r\n");
-//  };
+  while(MPU_Init()){
+    printf("Init Error!\r\n");
+  };
 //  while(mpu_dmp_init())
 //  {
 //    delay_ms(200);
@@ -116,6 +121,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
     HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
     HAL_Delay(500);
+//    printf("Hello World!");
 //    if(mpu_dmp_get_data(&pitch,&roll,&yaw)==0)
     {
 //      temp=MPU_Get_Temperature();
@@ -170,18 +176,7 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-/* USARRT DEBUGGER */
-//int fputc(int ch, FILE *f){
-//  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xffff);
-//  return ch;
-//}
 
-/* SWD DEBUGGER */
-int fputc(int ch, FILE *f)
-{
-  ITM_SendChar(ch);
-  return ch;
-}
 /* USER CODE END 4 */
 
 /**

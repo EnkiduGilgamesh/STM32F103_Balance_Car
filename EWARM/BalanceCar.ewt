@@ -1437,6 +1437,12 @@
         <group>
             <name>User</name>
             <group>
+                <name>Argument</name>
+                <file>
+                    <name>$PROJ_DIR$\..\User\Argument\arg.h</name>
+                </file>
+            </group>
+            <group>
                 <name>Core</name>
                 <file>
                     <name>$PROJ_DIR$\..\Core\Src\gpio.c</name>
@@ -1458,36 +1464,57 @@
                 </file>
             </group>
             <group>
+                <name>Debugger</name>
+                <file>
+                    <name>$PROJ_DIR$\..\User\Debugger\debugger.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\User\Debugger\debugger.h</name>
+                </file>
+            </group>
+            <group>
                 <name>MPU6050</name>
+                <group>
+                    <name>Inc</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\User\MPU6050\delay.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\User\MPU6050\dmpKey.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\User\MPU6050\dmpmap.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\User\MPU6050\inv_mpu.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\User\MPU6050\inv_mpu_dmp_motion_driver.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\User\MPU6050\mpu6050.h</name>
+                    </file>
+                </group>
+                <group>
+                    <name>Src</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\User\MPU6050\inv_mpu.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\User\MPU6050\inv_mpu_dmp_motion_driver.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\User\MPU6050\mpu6050.c</name>
+                    </file>
+                </group>
+            </group>
+            <group>
+                <name>PID</name>
                 <file>
-                    <name>$PROJ_DIR$\..\Core\Inc\delay.h</name>
+                    <name>$PROJ_DIR$\..\User\PID\pid.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\Core\Inc\dmpKey.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Core\Inc\dmpmap.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Core\Inc\gyro.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Core\Src\inv_mpu.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Core\Inc\inv_mpu.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Core\Src\inv_mpu_dmp_motion_driver.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Core\Inc\inv_mpu_dmp_motion_driver.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Core\Src\mpu6050.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Core\Inc\mpu6050.h</name>
+                    <name>$PROJ_DIR$\..\User\PID\pid.h</name>
                 </file>
             </group>
         </group>
